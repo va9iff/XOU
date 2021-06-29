@@ -13,10 +13,11 @@
   text-align: center;
 }
 #page {
+  /* box-shadow: 0 0 13px inset lime; */
   display: flex;
-  transition: 200ms;
+  transition: 700ms;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center; /*makes arows packed in center*/
   justify-content: start;
   min-width: 100vw;
   min-height: 100vh;
@@ -81,13 +82,13 @@ body {
   /* transition-delay: 100ms; */
   transition: 140ms;
   /* border: 2px hsl(313, 100%, 50%) solid; */
-  filter: drop-shadow(0 14px 14px #260031);
+  filter: drop-shadow(0 14px 7px #260031);
 }
 
 .but:focus {
   /* background-color: hsl(300, 100%, 40%); */
   /* border: solid 2px #3f000e; */
-  border: 2px hsl(313, 100%, 50%) solid;
+  /* border: 2px hsl(313, 100%, 50%) solid; */
 }
 
 .taken {

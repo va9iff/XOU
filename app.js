@@ -7,7 +7,7 @@ function el(elt, elclass) {
   return eleming;
 }
 
-var players = ["X", "a", "X", "a"];
+var players = ["X", "0", "U", "Z"];
 tourplayer = players[0];
 var tour = 0;
 var b;
@@ -135,8 +135,11 @@ function pclick() {
   this.onclick = null;
   this.classList.add("taken");
   let itshue = (360 / players.length) * (tour % players.length) - 60;
+  let nexthue = (360 / players.length) * ((tour + 1) % players.length) - 60;
   // alert(itshue);
   this.style.backgroundColor = "hsla(" + itshue + ", 60%, 50%, 1)";
+  page.style.boxShadow = "0 0 7px 2px inset " + "hsla(" + nexthue + ", 60%, 50%, 0.8)";
+  // "hsla(" + itshue + ", 60%, 50%, 1)";
 
   // main.style.background = "linear-gradient(160deg, hsl(" + itshue + ", 100%, 15%), hsl(" + itshue + ", 100%, 14%))";
   // checkwin();
