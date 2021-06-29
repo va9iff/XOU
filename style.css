@@ -6,29 +6,47 @@
   font-family: "Roboto", sans-serif;
 }
 #stats {
+  margin: 1.2rem;
   font-size: 2rem;
   letter-spacing: 1.2rem;
   word-spacing: 1.5rem;
+  text-align: center;
 }
-#main {
+#page {
   display: flex;
   transition: 200ms;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: start;
   min-width: 100vw;
   min-height: 100vh;
   /* background: linear-gradient(160deg, hsl(271, 100%, 15%), hsl(290, 100%, 14%)); */
-  background: linear-gradient(160deg, hsl(271, 100%, 15%), hsl(290, 100%, 14%));
+}
+#main {
+  align-items: center;
+  justify-content: center;
+  /* background-color: #555; */
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(160deg, hsl(271, 100%, 15%), hsl(330, 100%, 14%));
+  /* background: hsl(271, 100%, 15%); */
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 .arow {
   /* background-color: brown; */
   width: 100%;
   flex-grow: 1;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 /* .but :hover { */
@@ -41,6 +59,8 @@
   /* flex: 1fr; */
   /* width: 1000px; */
   flex-shrink: 1;
+  min-width: 2rem;
+  min-height: 2rem;
   width: 40px;
   height: 40px;
   /* height: calc(100% - 8px); */

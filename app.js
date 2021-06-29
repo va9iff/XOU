@@ -1,4 +1,5 @@
-main = document.querySelector("#main");
+var main = document.querySelector("#main");
+var page = document.querySelector("#page");
 stats = document.querySelector("#stats");
 function el(elt, elclass) {
   let eleming = document.createElement(elt);
@@ -9,40 +10,15 @@ function el(elt, elclass) {
 var players = ["Z", "X", "O", "U"];
 tourplayer = players[0];
 var tour = 0;
+var b;
 var getplayer = () => players[tour % players.length];
 
 windirs = [
   [
-    [0, 1],
-    [0, 2],
-  ],
-  [
-    [1, 1],
-    [2, 2],
-  ],
-  [
+    [0, 0],
     [1, 0],
-    [2, 0],
-  ],
-  [
-    [1, -1],
-    [2, -2],
-  ],
-  [
-    [-0, 1],
-    [-0, 2],
-  ],
-  [
-    [-1, 1],
-    [-2, 2],
-  ],
-  [
+    [0, 1],
     [-1, 0],
-    [-2, 0],
-  ],
-  [
-    [-1, -1],
-    [-2, -2],
   ],
 ];
 
@@ -125,27 +101,30 @@ var nelm = (elt, aclass) => {
   main.appendChild(elem);
   return elem;
 };
-boardlen = [7, 7];
+boardlen = [10, 10];
 
-b = [];
-
-for (let i = 0; i < boardlen[0]; i++) {
-  let visRow = nelm("div", "arow");
-  let nX = [];
-  for (let ix = 0; ix < boardlen[1]; ix++) {
-    but = el("button", "but");
-    nX.push(but);
-    but.VGF = "Y";
-    // but.addEventListener("click", pclick);
-    but.onclick = pclick;
-    but.innerHTML = i + ";" + ix;
-    but.coords = [i, ix];
-    // console.log(but.coords);
-    // but.style.width = "calc(100px /" + i + " )";
-    visRow.appendChild(but);
+function startgame() {
+  main.innerHTML = "";
+  b = [];
+  for (let i = 0; i < boardlen[0]; i++) {
+    let visRow = nelm("div", "arow");
+    let nX = [];
+    for (let ix = 0; ix < boardlen[1]; ix++) {
+      but = el("button", "but");
+      nX.push(but);
+      but.VGF = "Y";
+      // but.addEventListener("click", pclick);
+      but.onclick = pclick;
+      but.innerHTML = i + ";" + ix;
+      but.coords = [i, ix];
+      // console.log(but.coords);
+      // but.style.width = "calc(100px /" + i + " )";
+      visRow.appendChild(but);
+    }
+    b.push(nX);
   }
-  b.push(nX);
 }
+startgame();
 
 // console.log(b);
 // b[2][4] = 1;
