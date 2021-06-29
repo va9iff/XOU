@@ -7,56 +7,106 @@ function el(elt, elclass) {
   return eleming;
 }
 
-var players = ["Z", "X", "O", "U"];
+var players = ["X", "a", "X", "a"];
 tourplayer = players[0];
 var tour = 0;
 var b;
 var getplayer = () => players[tour % players.length];
 
-windirs = [
+var classics = [
+  [
+    [0, 0],
+    [0, 1],
+    [0, 2],
+  ],
+  [
+    [0, 0],
+    [1, 0],
+    [2, 0],
+  ],
+  [
+    [0, 0],
+    [1, 1],
+    [2, 2],
+  ],
+  [
+    [0, 0],
+    [-1, 1],
+    [-2, 2],
+  ],
+];
+
+var diamond = [
+  [
+    [0, 0],
+    [1, 1],
+    [0, 2],
+    [-1, 1],
+  ],
+];
+
+var block = [
   [
     [0, 0],
     [1, 0],
     [0, 1],
-    [-1, 0],
+    [1, 1],
   ],
 ];
+
+windirs = [...diamond, ...block];
 
 function checurr(takenP) {
   var retrr;
   var e = false;
   var E = false;
   windirs.forEach((windir) => {
-    // her bir win directionu
+    let alldir = [];
     windir.forEach((winstep) => {
-      // her bir win addimi
-      if (
-        0 < takenP.coords[0] + winstep[0] &&
-        takenP.coords[0] + winstep[0] < b.length - 1 &&
-        takenP.coords[1] + winstep[1] < b.length &&
-        0 < takenP.coords[1] + winstep[1]
-      ) {
+      let everydir = [];
+      // alert("now for" + winstep);
+      win = false;
+      streak = true;
+      windir.forEach((ministep) => {
+        let currentstep = [
+          [parseInt(winstep[0]) - parseInt(ministep[0])],
+          [parseInt(winstep[1]) - parseInt(ministep[1])],
+        ];
+        let currentPcords = [
+          parseInt(currentstep[0]) + parseInt(takenP.coords[0]),
+          parseInt(currentstep[1]) + parseInt(takenP.coords[1]),
+        ];
+        let currentP = b[currentPcords[0]][currentPcords[1]];
         //
-        console.log("gecilmisdir");
-        if (
-          b[takenP.coords[0] + winstep[0]][takenP.coords[1] + winstep[1]].innerHTML ==
-          b[takenP.coords[0]][takenP.coords[1]].innerHTML
-        ) {
-          // console.log("prr");
-          if (e) {
-            E = true;
-          }
-          e = true;
+        //
+        // alert(currentP.innerHTML == takenP.innerHTML);
+
+        if (streak && currentP.innerHTML == takenP.innerHTML) {
+          win = true;
+          // alert("a match!");
         } else {
-          console.log("elslendin");
-          // e = false;
+          win = false;
+          streak = false;
         }
+
+        //
+        //
+        //
+
+        // everydir.push(currentstep);
+        console.log(currentP);
+        // alldir.push(b[currentPcords[0]][currentPcords[1]])
+        // alert(currentPcords);
+      });
+      if (win) {
+        alert("win");
       }
+      // everydir.forEach(() => {});
+      // alldir.push(everydir);
     });
 
     e = false;
   });
-  console.log(retrr);
   // return retrr;
   // return e;
   return E;
@@ -91,7 +141,7 @@ function pclick() {
   // main.style.background = "linear-gradient(160deg, hsl(" + itshue + ", 100%, 15%), hsl(" + itshue + ", 100%, 14%))";
   // checkwin();
   checurr(this);
-  checkwin();
+  // checkwin();
 }
 
 var nelm = (elt, aclass) => {
