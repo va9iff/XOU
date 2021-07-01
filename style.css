@@ -122,6 +122,7 @@ svg {
 #page {
   /* box-shadow: 0 0 13px inset lime; */
   /* background-color: crimson; */
+  box-shadow: 0 17px 17px -2px inset #0000;
   display: flex;
   transition: 700ms;
   flex-direction: column;
@@ -201,7 +202,7 @@ body {
   /* transition-delay: 100ms; */
   transition: 140ms;
   /* border: 2px hsl(313, 100%, 50%) solid; */
-  filter: drop-shadow(0 14px 7px #260031);
+  filter: drop-shadow(0 14px 2px #260031b4);
 }
 
 /* .but:focus { */
