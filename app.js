@@ -1,5 +1,7 @@
 var main = document.querySelector("#main");
 var page = document.querySelector("#page");
+var startmenu = document.querySelector("#startmenu");
+var wincons = document.querySelector("#wincons");
 stats = document.querySelector("#stats");
 function el(elt, elclass) {
   let eleming = document.createElement(elt);
@@ -7,13 +9,46 @@ function el(elt, elclass) {
   return eleming;
 }
 
-var players = ["X", "0", "U", "Z"];
+var players = [
+  "Z",
+  "X",
+  "O",
+  "U",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+];
 tourplayer = players[0];
+var playerLen = 4;
 var tour = 0;
 var b;
-var getplayer = () => players[tour % players.length];
+var getplayer = () => players[tour % playerLen];
 
-var classics = [
+function currentPlayerName() {
+  return players[tour % playerLen];
+}
+
+var classic = [
   [
     [0, 0],
     [0, 1],
@@ -54,7 +89,38 @@ var block = [
   ],
 ];
 
-windirs = [...diamond, ...block];
+var winPatObj = {
+  classic: classic,
+  diamond: diamond,
+  block: block,
+};
+
+winPatButs = document.querySelectorAll(".winpat");
+
+var buts = [];
+
+function winPatButClick(but) {
+  // alert(e);
+  // windirs = [...windirs, winPatBut.pathList];
+  return () => {
+    // alert(but);
+    // windirs = [...windirs, ...but.pathList];
+    but.classList.toggle("selectedwindir");
+
+    but.isTurned = !but.isTurned;
+    // alert(but.isTurned);
+  };
+}
+
+winPatButs.forEach((winPatBut) => {
+  winPatBut.onclick = winPatButClick(winPatBut);
+  winPatBut.pathList = winPatObj[winPatBut.id];
+  winPatBut.isTurned = false;
+  buts.push(winPatBut);
+});
+
+var windirs = [];
+// windirs = [classic];
 
 function checurr(takenP) {
   var retrr;
@@ -66,40 +132,58 @@ function checurr(takenP) {
       let everydir = [];
       // alert("now for" + winstep);
       win = false;
+      let iswining = [];
       streak = true;
       windir.forEach((ministep) => {
-        let currentstep = [
-          [parseInt(winstep[0]) - parseInt(ministep[0])],
-          [parseInt(winstep[1]) - parseInt(ministep[1])],
-        ];
-        let currentPcords = [
-          parseInt(currentstep[0]) + parseInt(takenP.coords[0]),
-          parseInt(currentstep[1]) + parseInt(takenP.coords[1]),
-        ];
-        let currentP = b[currentPcords[0]][currentPcords[1]];
-        //
-        //
-        // alert(currentP.innerHTML == takenP.innerHTML);
+        try {
+          let currentstep = [
+            [parseInt(winstep[0]) - parseInt(ministep[0])],
+            [parseInt(winstep[1]) - parseInt(ministep[1])],
+          ];
+          let currentPcords = [
+            parseInt(currentstep[0]) + parseInt(takenP.coords[0]),
+            parseInt(currentstep[1]) + parseInt(takenP.coords[1]),
+          ];
+          let currentP = b[currentPcords[0]][currentPcords[1]];
+          //
+          //
+          // alert(currentP.innerHTML == takenP.innerHTML);
 
-        if (streak && currentP.innerHTML == takenP.innerHTML) {
-          win = true;
-          // alert("a match!");
-        } else {
+          if (streak && currentP.innerHTML == takenP.innerHTML) {
+            win = true;
+            iswining.push(currentP);
+            // alert("a match!");
+          } else {
+            win = false;
+            streak = false;
+            iswining = [];
+          }
+
+          //
+          //
+          //
+
+          // everydir.push(currentstep);
+          // console.log(currentP);
+          // alldir.push(b[currentPcords[0]][currentPcords[1]])
+          // alert(currentPcords);
+        } catch (err) {
           win = false;
           streak = false;
+          iswining = [];
         }
-
-        //
-        //
-        //
-
-        // everydir.push(currentstep);
-        console.log(currentP);
-        // alldir.push(b[currentPcords[0]][currentPcords[1]])
-        // alert(currentPcords);
       });
       if (win) {
         alert("win");
+        iswining.forEach((winnerP) => {
+          winnerP.style.backgroundColor = "black";
+          winnerP.innerHTML = currentPlayerName() + " won";
+          stats.innerHTML = winnerP.innerHTML + " the game";
+          startbutton.style.visibility = "visible";
+          startmenu.style.display = "flex";
+
+          windir = [];
+        });
       }
       // everydir.forEach(() => {});
       // alldir.push(everydir);
@@ -127,15 +211,15 @@ function checkwin() {
 function pclick() {
   // alert(this.coords);
   tour++;
-  tourplayer = players[tour % players.length];
-  stats.innerHTML = players[(tour + 1) % players.length] + "'s tour";
+  tourplayer = players[tour % playerLen];
+  stats.innerHTML = players[(tour + 1) % playerLen] + "'s tour";
   // alert(this.className);
   // alert("it is " + tourplayer);
   this.innerHTML = tourplayer;
   this.onclick = null;
   this.classList.add("taken");
-  let itshue = (360 / players.length) * (tour % players.length) - 60;
-  let nexthue = (360 / players.length) * ((tour + 1) % players.length) - 60;
+  let itshue = (360 / playerLen) * (tour % playerLen) - 60;
+  let nexthue = (360 / playerLen) * ((tour + 1) % playerLen) - 60;
   // alert(itshue);
   this.style.backgroundColor = "hsla(" + itshue + ", 60%, 50%, 1)";
   page.style.boxShadow = "0 0 7px 2px inset " + "hsla(" + nexthue + ", 60%, 50%, 0.8)";
@@ -154,9 +238,25 @@ var nelm = (elt, aclass) => {
   main.appendChild(elem);
   return elem;
 };
-boardlen = [10, 10];
+boardlen = [7, 7];
 
 function startgame() {
+  windirs = [];
+  buts.forEach((but) => {
+    if (but.isTurned) windirs = [...windirs, ...but.pathList];
+    // alert(but);
+  });
+
+  if (windirs.length == 0) return alert("win con is required");
+
+  startbutton.style.visibility = "hidden";
+  startmenu.style.display = "none";
+
+  wincons.innerHTML = "";
+  buts.forEach((but) => {
+    if (but.isTurned) wincons.innerHTML = wincons.innerHTML + but.id + " ";
+  });
+
   main.innerHTML = "";
   b = [];
   for (let i = 0; i < boardlen[0]; i++) {
@@ -177,8 +277,26 @@ function startgame() {
     b.push(nX);
   }
 }
-startgame();
+// startgame();
 
 // console.log(b);
 // b[2][4] = 1;
 // main.innerHTML = main.innerHTML + b;
+
+startbutton = document.querySelector("#startbutton");
+startbutton.onclick = startgame;
+// startbutton.style.visibility = "hidden";
+
+document.querySelector("#xdim").addEventListener("input", function (evt) {
+  boardlen[0] = this.value;
+});
+document.querySelector("#ydim").addEventListener("input", function (evt) {
+  if (this.value < 1) this.value = 1;
+  boardlen[1] = this.value;
+});
+
+document.getElementById("classic").click();
+
+document.querySelector("#playerlen").addEventListener("input", function (evt) {
+  playerLen = this.value;
+});

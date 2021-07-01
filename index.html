@@ -12,6 +12,48 @@
   <body>
     <div id="page">
       <div id="stats">XOU</div>
+      <div id="wincons"></div>
+      <div id="startmenu">
+        Dimensions
+        <div id="dimensioninputholder">
+          <input type="number" value="7" id="ydim" min="1" /><input type="number" value="7" id="xdim" />
+        </div>
+        Players
+        <input id="playerlen" type="number" value="4" min="0" max="27" />
+        Win conditions
+        <div class="winpatwrapper">
+          <button class="winpat" id="diamond">
+            Diamond
+            <svg height="120" width="120">
+              <!-- style="border: 2px solid lime" -->
+              <!-- <circle cx="10" cy="10" class="patrevcirc" /> -->
+              <circle cx="10" cy="60" class="patrevcirc" />
+              <!-- <circle cx="10" cy="110" class="patrevcirc" /> -->
+              <circle cx="60" cy="10" class="patrevcirc" />
+              <!-- <circle cx="110" cy="10" class="patrevcirc" /> -->
+              <!-- <circle cx="60" cy="60" class="patrevcirc" /> -->
+              <circle cx="60" cy="110" class="patrevcirc" />
+              <circle cx="110" cy="60" class="patrevcirc" />
+              <!-- <circle cx="110" cy="110" class="patrevcirc" /> -->
+            </svg>
+          </button>
+          <button class="winpat" id="classic">
+            Classic
+            <svg height="120" width="120">
+              <circle cx="10" cy="10" class="patrevcirc" />
+              <circle cx="10" cy="60" class="patrevcirc" />
+              <circle cx="10" cy="110" class="patrevcirc" />
+              <circle cx="60" cy="10" class="patrevcirc" />
+              <circle cx="110" cy="10" class="patrevcirc" />
+              <circle cx="60" cy="60" class="patrevcirc" />
+              <circle cx="60" cy="110" class="patrevcirc" />
+              <circle cx="110" cy="60" class="patrevcirc" />
+              <circle cx="110" cy="110" class="patrevcirc" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <button id="startbutton">start new game</button>
       <div id="main"></div>
     </div>
     <script src="app.js"></script>
