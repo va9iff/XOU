@@ -15,7 +15,7 @@
         <div id="winpopup">
           <b id="winnerplayertext">Ö</b> player won! you can continue to playing on current board, or start a new game.
           <br /><br />
-          <i>tap to continue</i>
+          <i style="margin-top: auto">tap to continue</i>
         </div>
       </div>
       <div id="stats">XOU</div>
@@ -31,9 +31,27 @@
           />
         </div>
         Players
-        <input id="playerlen" type="number" value="4" min="0" max="27" />
+        <input id="playerlen" type="number" value="4" min="1" max="27" />
         Win conditions
         <div class="winpatwrapper">
+          <button class="winpat" id="classic">
+            Classic
+            <svg height="120" width="120">
+              <circle cx="10" cy="10" class="patrevcirc" />
+              <circle cx="10" cy="60" class="patrevcirc" />
+              <circle cx="10" cy="110" class="patrevcirc" />
+              <circle cx="60" cy="10" class="patrevcirc" />
+              <circle cx="110" cy="10" class="patrevcirc" />
+              <circle cx="60" cy="60" class="patrevcirc" />
+              <circle cx="60" cy="110" class="patrevcirc" />
+              <circle cx="110" cy="60" class="patrevcirc" />
+              <circle cx="110" cy="110" class="patrevcirc" />
+              <line x1="10" y1="10" x2="110" y2="110" class="patrevcirc" />
+              <line x1="60" y1="10" x2="60" y2="110" class="patrevcirc" />
+              <line x1="10" y1="60" x2="110" y2="60" class="patrevcirc" />
+              <line x1="10" y1="110" x2="110" y2="10" class="patrevcirc" />
+            </svg>
+          </button>
           <button class="winpat" id="diamond">
             Diamond
             <svg height="120" width="120">
@@ -49,18 +67,17 @@
               <!-- <circle cx="110" cy="110" class="patrevcirc" /> -->
             </svg>
           </button>
-          <button class="winpat" id="classic">
-            Classic
+          <button class="winpat" id="block">
+            Block
             <svg height="120" width="120">
-              <circle cx="10" cy="10" class="patrevcirc" />
-              <circle cx="10" cy="60" class="patrevcirc" />
-              <circle cx="10" cy="110" class="patrevcirc" />
-              <circle cx="60" cy="10" class="patrevcirc" />
-              <circle cx="110" cy="10" class="patrevcirc" />
-              <circle cx="60" cy="60" class="patrevcirc" />
-              <circle cx="60" cy="110" class="patrevcirc" />
-              <circle cx="110" cy="60" class="patrevcirc" />
-              <circle cx="110" cy="110" class="patrevcirc" />
+              <circle cx="40" cy="40" class="patrevcirc" />
+              <circle cx="40" cy="80" class="patrevcirc" />
+              <!-- <circle cx="60" cy="10" class="patrevcirc" /> -->
+              <circle cx="80" cy="40" class="patrevcirc" />
+              <!-- <circle cx="60" cy="60" class="patrevcirc" /> -->
+              <!-- <circle cx="60" cy="110" class="patrevcirc" /> -->
+              <!-- <circle cx="110" cy="60" class="patrevcirc" /> -->
+              <circle cx="80" cy="80" class="patrevcirc" />
             </svg>
           </button>
         </div>
