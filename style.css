@@ -54,8 +54,9 @@ input {
   margin-top: 20px;
 }
 .winpat:hover {
-  box-shadow: 0 0 20px 0 inset hsl(327, 100%, 50%);
-  border: 2px solid hsl(327, 100%, 70%);
+  /* box-shadow: 0 0 5px 0 inset hsl(327, 100%, 50%); */
+  /* border: 2px solid hsl(327, 100%, 70%); */
+  background-color: hsla(327, 100%, 70%, 7%);
 }
 .winpat {
   transition: 200ms;
@@ -73,9 +74,11 @@ input {
 }
 
 .selectedwindir {
-  background-color: hsla(327, 100%, 70%, 7%);
   /* filter: drop-shadow(0 0 4px hsl(327, 100%, 70%)); */
-  box-shadow: 0 0 8px 4px hsl(327, 100%, 50%);
+  /* box-shadow: 0 0 5px 4px hsl(327, 100%, 50%); */
+  box-shadow: 0 0 5px 0 inset hsl(327, 100%, 50%);
+
+  border: 2px solid hsl(327, 100%, 70%);
 }
 
 #wincons {
