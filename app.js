@@ -188,6 +188,8 @@ function checurr(takenP) {
         startmenu.style.display = "flex";
         winnerplayertext.innerHTML = currentPlayerName();
         winpopupwrapper.style.top = 0;
+        winpopupwrapper.style.transform = "scale(1)";
+        winpopupwrapper.style.opacity = 1;
       }
       // everydir.forEach(() => {});
       // alldir.push(everydir);
@@ -203,6 +205,8 @@ function checurr(takenP) {
 winpopup.addEventListener("click", (e) => {
   // alert(e);
   winpopupwrapper.style.top = "100%";
+  winpopupwrapper.style.transform = "scale(0)";
+  winpopupwrapper.style.opacity = 0;
 });
 
 // function checkwin() {

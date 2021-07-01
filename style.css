@@ -227,7 +227,8 @@ body {
   z-index: 999;
   top: 100%;
   left: 0;
-  transition: 150ms;
+  /* transition: 150ms; */
+  transition: 260ms;
 }
 
 b {
