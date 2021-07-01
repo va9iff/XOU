@@ -2,6 +2,9 @@ var main = document.querySelector("#main");
 var page = document.querySelector("#page");
 var startmenu = document.querySelector("#startmenu");
 var wincons = document.querySelector("#wincons");
+var winnerplayertext = document.querySelector("#winnerplayertext");
+var winpopup = document.querySelector("#winpopup");
+var winpopupwrapper = document.querySelector("#winpopupwrapper");
 stats = document.querySelector("#stats");
 function el(elt, elclass) {
   let eleming = document.createElement(elt);
@@ -174,14 +177,15 @@ function checurr(takenP) {
         }
       });
       if (win) {
-        alert("win");
+        // alert("win");
         iswining.forEach((winnerP) => {
           winnerP.style.backgroundColor = "black";
           winnerP.innerHTML = currentPlayerName() + " won";
           stats.innerHTML = winnerP.innerHTML + " the game";
           startbutton.style.visibility = "visible";
           startmenu.style.display = "flex";
-
+          winnerplayertext.innerHTML = currentPlayerName();
+          winpopupwrapper.style.top = 0;
           windir = [];
         });
       }
@@ -196,17 +200,22 @@ function checurr(takenP) {
   return E;
 }
 
-function checkwin() {
-  b.forEach((row) => {
-    // console.log(row);
-    row.forEach((P) => {
-      // console.log(checurr(P));
-      if (checurr(P)) {
-        alert(getplayer() + " Player won the game !!!!!!");
-      }
-    });
-  });
-}
+winpopup.addEventListener("click", (e) => {
+  // alert(e);
+  winpopupwrapper.style.top = "100%";
+});
+
+// function checkwin() {
+//   b.forEach((row) => {
+//     // console.log(row);
+//     row.forEach((P) => {
+//       // console.log(checurr(P));
+//       if (checurr(P)) {
+//         alert(getplayer() + " Player won the game !!!!!!");
+//       }
+//     });
+//   });
+// }
 
 function pclick() {
   // alert(this.coords);

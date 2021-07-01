@@ -68,11 +68,12 @@ input {
   align-items: center;
   margin: 24px;
   /* border: 2px solid hsl(327, 100%, 50%); */
-  border: none;
+  /* border: none; */
+  border: 2px solid hsla(327, 100%, 70%, 0);
 }
 
 .selectedwindir {
-  /* background-color: hsla(327, 100%, 70%, 20%); */
+  background-color: hsla(327, 100%, 70%, 7%);
   /* filter: drop-shadow(0 0 4px hsl(327, 100%, 70%)); */
   box-shadow: 0 0 8px 4px hsl(327, 100%, 50%);
 }
@@ -104,6 +105,7 @@ svg {
 #startbutton {
   background-color: hsla(300, 100%, 27%, 20%);
   border: 2px solid hsl(327, 100%, 50%);
+  padding: 1rem;
 }
 
 /* #startmenu button {
@@ -132,6 +134,7 @@ svg {
   /*  */
   /* background: linear-gradient(160deg, hsl(271, 100%, 15%), hsl(290, 100%, 14%)); */
 }
+
 #main {
   display: flex;
   flex-direction: column;
@@ -140,7 +143,7 @@ svg {
   justify-content: space-between;
   /* flex-grow: 1fr; */
   /* background-color: #555; */
-  min-height: calc(100vh - 5rem);
+  min-height: calc(100vh - 10rem);
 }
 
 html {
@@ -210,6 +213,29 @@ body {
 .taken {
   background-color: hsla(286, 60%, 50%, 1);
   opacity: 1;
+}
+
+#winpopupwrapper {
+  padding: 5%;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+  top: 100%;
+  left: 0;
+  transition: 150ms;
+}
+
+b {
+  font-size: 4rem;
+}
+#winpopup {
+  font-size: 2rem;
+  background-color: hsl(337, 100%, 50%);
+  border-radius: 40px;
+  padding: 40px;
+  text-align: center;
+  height: 100%;
 }
 
 /* width */
