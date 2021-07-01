@@ -181,13 +181,13 @@ function checurr(takenP) {
         iswining.forEach((winnerP) => {
           winnerP.style.backgroundColor = "black";
           winnerP.innerHTML = currentPlayerName() + " won";
-          stats.innerHTML = winnerP.innerHTML + " the game";
-          startbutton.style.visibility = "visible";
-          startmenu.style.display = "flex";
-          winnerplayertext.innerHTML = currentPlayerName();
-          winpopupwrapper.style.top = 0;
-          windir = [];
         });
+        stats.innerHTML = winnerP.innerHTML + " the game";
+        startbutton.style.visibility = "visible";
+        startmenu.style.display = "flex";
+        winnerplayertext.innerHTML = currentPlayerName();
+        winpopupwrapper.style.top = 0;
+        windir = [];
       }
       // everydir.forEach(() => {});
       // alldir.push(everydir);
