@@ -203,9 +203,9 @@ body {
   opacity: 1;
   transform: scale(1.7) translateY(-27%);
   /* transition-delay: 100ms; */
-  transition: 140ms;
+  transition: 60ms;
   /* border: 2px hsl(313, 100%, 50%) solid; */
-  filter: drop-shadow(0 14px 2px #260031b4);
+  filter: drop-shadow(0 14px 0 #260031b4);
 }
 
 /* .but:focus { */
