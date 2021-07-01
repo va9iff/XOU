@@ -231,7 +231,7 @@ function pclick() {
   let nexthue = (360 / playerLen) * ((tour + 1) % playerLen) - 60;
   // alert(itshue);
   this.style.backgroundColor = "hsla(" + itshue + ", 60%, 50%, 1)";
-  page.style.boxShadow = "0 0 7px 2px inset " + "hsla(" + nexthue + ", 60%, 50%, 0.8)";
+  page.style.boxShadow = "0 10px 17px -2px inset " + "hsla(" + nexthue + ", 60%, 50%, 0.8)";
   // "hsla(" + itshue + ", 60%, 50%, 1)";
 
   // main.style.background = "linear-gradient(160deg, hsl(" + itshue + ", 100%, 15%), hsl(" + itshue + ", 100%, 14%))";
